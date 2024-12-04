@@ -1,0 +1,14 @@
+{
+    "name": "aaw/magazinonline",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }, 
+    "require": {
+        "slim/slim": "^4.14",
+        "slim/psr7": "^1.7",
+        "slim/http": "^1.4",
+        "illuminate/database": "^11.32"
+    }
+}

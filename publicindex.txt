@@ -1,0 +1,29 @@
+<?php
+use Slim\Factory\AppFactory;
+use Slim\Middleware\MethodOverrideMiddleware;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$app = AppFactory::create();
+$app->addRoutingMiddleware();
+$app->add(new MethodOverrideMiddleware());
+$app->addErrorMiddleware(true, true, true);
+
+
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../routes/web.php';
+
+$app->run();
+?>
+
+productcontroller.php 
+index 
+public function index(Request $request, Response $response)
+    {
+        $products = Product::all();
+        ob_start();
+        require '../views/products/index.view.php';
+        $html = ob_get_clean();
+        $response->getBody()->write($html);
+        return $response;
+    }
